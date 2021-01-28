@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/settingFragment"
+        android:title="@string/setting"
+        android:menuCategory="secondary"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/termsMenu"
+        android:title="@string/terms_amp_condition"
+        app:showAsAction="never" />
+</menu>

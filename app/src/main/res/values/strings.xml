@@ -1,0 +1,12 @@
+<resources>
+  <string name="app_name">NavFlowApp</string>
+    <string name="home_fragment">Home Fragment</string>
+    <string name="enter_your_email">enter your email</string>
+    <string name="enter_your_password">enter your password</string>
+  <string name="login">Login</string>
+    <string name="welcome_fragment">welcome fragment</string>
+    <string name="setting">Setting</string>
+  <string name="terms_amp_condition"><![CDATA[Terms & Condition]]></string>
+    <string name="search">Search</string>
+  <string name="home">Home</string>
+</resources>
