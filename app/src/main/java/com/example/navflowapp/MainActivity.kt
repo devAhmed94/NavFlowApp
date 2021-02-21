@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
@@ -28,11 +29,27 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container) as NavHostFragment
         navController = hostFragment.findNavController()
 
-        appBarConfiguration = AppBarConfiguration(setOf(R.id.homeFragment,R.id.searchFragment),binding.dwMain)
+        appBarConfiguration =
+            AppBarConfiguration(setOf(R.id.homeFragment, R.id.searchFragment), binding.dwMain)
         setSupportActionBar(binding.tbMain)
-        setupActionBarWithNavController(navController,appBarConfiguration)
+        setupActionBarWithNavController(navController, appBarConfiguration)
         binding.nbMain.setupWithNavController(navController)
         binding.nvMain.setupWithNavController(navController)
+        navController.addOnDestinationChangedListener(object :
+            NavController.OnDestinationChangedListener {
+            override fun onDestinationChanged(
+                controller: NavController,
+                destination: NavDestination,
+                arguments: Bundle?
+            ) {
+                if (destination.id == R.id.settingFragment) {
+                    binding.tbMain.visibility = View.GONE
+                } else {
+                    binding.tbMain.visibility = View.VISIBLE
+                }
+            }
+
+        })
 
     }
 
@@ -46,11 +63,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId==R.id.termsMenu){
-            var action =NavDirections.actionGlobalTermsFragment()
+        if (item.itemId == R.id.termsMenu) {
+            var action = NavDirections.actionGlobalTermsFragment()
             navController.navigate(action)
             return true
-        }else{
+        } else {
             return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
         }
     }
